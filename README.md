@@ -1,2 +1,4 @@
 # sniffle
-Making a website with lua LOL
+
+A beginner friendly way to start Databases with lua
+
