@@ -56,7 +56,7 @@ It gives the path where the file your calling it from, So if you call it from ma
 
 Or if you are calling it from a folder in the workspace it will give the directory of where the folder is, so it is recommended when making a folder the file your calling it from is in the workspace
 
-If you call the the make directory function and the file exist it will 
+If you call the the make directory function and the file exist it will return an error ( This will be fixed in later updates as we plan on using make directory as a safety function incase your folder gets deleted for whatever reason)
 
 
 
