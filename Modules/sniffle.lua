@@ -1,5 +1,5 @@
 JSON = require "Modules.JSON"
-LOS = require "Modules.LOS"
+LOS = require "Modules.LEOS"
 local Sniffle = {}
 
 

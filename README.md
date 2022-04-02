@@ -24,28 +24,29 @@ Update sniffle
 git fetch https://github.com/Rahyulty/sniffle
 ```
 
-When working with sniffle we have to make a tree folder where we can put all of our data. You can do this manually or do this via the sniffle LOS module
+When working with sniffle we have to make a tree folder where we can put all of our data. You can do this manually or do this via the sniffle LEOS module
 
-### LOS
+### LEOS : Lua Extended OS
+
 
 ```lua
-LOS = require "sniffle.Modules.LOS"
+LEOS = require "sniffle.Modules.LEOS"
 
 -- Can do  
-LOS:MakeDirectory("Tree")
+LEOS:MakeDirectory("Tree")
 -- But..
 -- This is recomended
-LOS:MakeDirectory(LOS.CurrentPath().."Tree")
+LEOS:MakeDirectory(LEOS.CurrentPath().."Tree")
 -- You can customize the path to your liking but its recomended to make a variable ex.
 local TreePath = /workspace/sniffle/
 
-LOS:MakeDirectory(TreePath.."Tree")
+LEOS:MakeDirectory(TreePath.."Tree")
 ```
 
 it is also noted than when you do call the function 
 
 ```lua
-LOS.CurrentPath()
+LEOS.CurrentPath()
 ```
 
 It gives the path where the file your calling it from, So if you call it from main.lua and main.lua is just a file in your workspace it will return 
