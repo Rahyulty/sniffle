@@ -24,38 +24,7 @@ Update sniffle
 git fetch https://github.com/Rahyulty/sniffle
 ```
 
-<<<<<<< HEAD
-And since sniffle using lfs you will need the lfs module
-
 LFS
-=======
-When working with sniffle we have to make a tree folder where we can put all of our data. You can do this manually or do this via the sniffle LEOS module
-
-### LEOS : Lua Extended OS
-
-
-```lua
-LEOS = require "sniffle.Modules.LEOS"
-
--- Can do  
-LEOS:MakeDirectory("Tree")
--- But..
--- This is recomended
-LEOS:MakeDirectory(LEOS.CurrentPath().."Tree")
--- You can customize the path to your liking but its recomended to make a variable ex.
-local TreePath = /workspace/sniffle/
-
-LEOS:MakeDirectory(TreePath.."Tree")
-```
-
-it is also noted than when you do call the function 
-
-```lua
-LEOS.CurrentPath()
-```
-
-It gives the path where the file your calling it from, So if you call it from main.lua and main.lua is just a file in your workspace it will return 
->>>>>>> 123f9aee1085a019dcdf83e0175de8b9f816b054
 
 ```bash
 luarocks install luafilesystem
