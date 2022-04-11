@@ -1,13 +1,8 @@
 JSON = require "Modules.JSON"
-<<<<<<< HEAD
-LOS = require "Modules.LOS"
-LuaFileSystem = require "lfs"
-local Say = print
-Sniffle = {}
-=======
 LOS = require "Modules.LEOS"
+LuaFileSystem = require "lfs"
 local Sniffle = {}
->>>>>>> 123f9aee1085a019dcdf83e0175de8b9f816b054
+
 
 Trees = {}
 
