@@ -1,2 +1,0 @@
-tasks:
-  - init: brew install lua

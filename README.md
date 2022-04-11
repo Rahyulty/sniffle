@@ -24,9 +24,38 @@ Update sniffle
 git fetch https://github.com/Rahyulty/sniffle
 ```
 
+<<<<<<< HEAD
 And since sniffle using lfs you will need the lfs module
 
 LFS
+=======
+When working with sniffle we have to make a tree folder where we can put all of our data. You can do this manually or do this via the sniffle LEOS module
+
+### LEOS : Lua Extended OS
+
+
+```lua
+LEOS = require "sniffle.Modules.LEOS"
+
+-- Can do  
+LEOS:MakeDirectory("Tree")
+-- But..
+-- This is recomended
+LEOS:MakeDirectory(LEOS.CurrentPath().."Tree")
+-- You can customize the path to your liking but its recomended to make a variable ex.
+local TreePath = /workspace/sniffle/
+
+LEOS:MakeDirectory(TreePath.."Tree")
+```
+
+it is also noted than when you do call the function 
+
+```lua
+LEOS.CurrentPath()
+```
+
+It gives the path where the file your calling it from, So if you call it from main.lua and main.lua is just a file in your workspace it will return 
+>>>>>>> 123f9aee1085a019dcdf83e0175de8b9f816b054
 
 ```bash
 luarocks install luafilesystem
@@ -52,10 +81,19 @@ local Path = "/workspace/foo/foo2/foo3"
 SniffleBase.CreateDataTree("Tree", Path)
 ```
 
+<<<<<<< HEAD
 The function...
 ```
 SniffleBase.CreateDataTree()
 ```
+=======
+Or if you are calling it from a folder in the workspace it will give the directory of where the folder is, so it is recommended when making a folder the file your calling it from is in the workspace
+
+If you call the the make directory function and the file exist it will return an error ( This will be fixed in later updates as we plan on using make directory as a safety function incase your folder gets deleted for whatever reason)
+
+
+
+>>>>>>> 123f9aee1085a019dcdf83e0175de8b9f816b054
 
 not only initializes your directory, but it also serves as a backup in case your directory goes missing or the folder is unintentionally erased. If this occurs, it will recreate the folder (but will not completely restore all deleted or missing data) so that our code does not break.
 
