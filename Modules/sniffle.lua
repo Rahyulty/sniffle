@@ -2,7 +2,7 @@ JSON = require "Modules.JSON"
 LOS = require "Modules.LEOS"
 LuaFileSystem = require "lfs"
 local Sniffle = {}
-
+local Say = print
 
 Trees = {}
 
@@ -26,10 +26,6 @@ function Sniffle.CreateDataTree(TreeName, Path)
 
       else
          table.insert( Trees, #Trees + 1 ,TreeName)
-         print(TreeName)
-         for i,v in pairs(Trees) do 
-            print(v)
-      end
          print("[~001~]The file "..TreeName.." has already been created, CreateTree has not been run ")
    end
 end
@@ -41,8 +37,12 @@ function Sniffle:CreateDataBase(DataBaseName, Under, PathofUnder)
          if PathofUnder == nil then 
             -- We Assume in workspace
             File = io.open(LuaFileSystem.currentdir().."/"..Under.."/"..DataBaseName, "w")
+            File:write(JSON.encode({}))
+            File:close()           
          else
             File = io.open(PathofUnder..DataBaseName, "w")
+            File:write(JSON.encode({}))
+            File:close()      
          end
       else
          self:CreateDataTree(Under)
