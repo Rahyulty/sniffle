@@ -24,43 +24,61 @@ Update sniffle
 git fetch https://github.com/Rahyulty/sniffle
 ```
 
-When working with sniffle we have to make a tree folder where we can put all of our data. You can do this manually or do this via the sniffle LOS module
+And since sniffle using lfs you will need the lfs module
 
-### LOS
-
-```lua
-LOS = require "sniffle.Modules.LOS"
-
--- Can do  
-LOS:MakeDirectory("Tree")
--- But..
--- This is recomended
-LOS:MakeDirectory(LOS.CurrentPath().."Tree")
--- You can customize the path to your liking but its recomended to make a variable ex.
-local TreePath = /workspace/sniffle/
-
-LOS:MakeDirectory(TreePath.."Tree")
-```
-
-it is also noted than when you do call the function 
-
-```lua
-LOS.CurrentPath()
-```
-
-It gives the path where the file your calling it from, So if you call it from main.lua and main.lua is just a file in your workspace it will return 
+LFS
 
 ```bash
-/workspace/sniffle/
+luarocks install luafilesystem
+```
+When we first start working with sniffle, we must establish a data tree in which we will store all of our data. You may do this manually, but for safety checks, it is recommended that you utilize the ```SniffleBase.CreateDataTree``` method.
+
+
+
+```lua
+SniffleBase = require "Modules.sniffle"
+local lfs = require "lfs"
+
+-- You can do this (will put it in your workspace by default)...
+SniffleBase.CreateDataTree("Tree")
+
+-- You can use the lfs for something more constant
+SniffleBase.CreateDataTree("Tree", lfs.currentdir())
+
+-- or you can customize for a specific directory
+
+local Path = "/workspace/foo/foo2/foo3"
+
+SniffleBase.CreateDataTree("Tree", Path)
 ```
 
-Or if you are calling it from a folder in the workspace it will give the directory of where the folder is, so it is recommended when making a folder the file your calling it from is in the workspace
+The function...
+```
+SniffleBase.CreateDataTree()
+```
 
-If you call the the make directory function and the file exist it will 
+not only initializes your directory, but it also serves as a backup in case your directory goes missing or the folder is unintentionally erased. If this occurs, it will recreate the folder (but will not completely restore all deleted or missing data) so that our code does not break.
 
+Then we'll use the ```SniffleBase:CreateDataBase()``` method to construct a database. CreateDatabase is a strict function, so read on carefully.
 
+Because finding dir paths in lua is difficult, and we recognize that your tree may not be immediately in the workspace, CreateBase accepts three arguments.
+- DataBaseName
+- Under ( What your tree is called)
+- PathOfUnder (Path of your tree : Optional arg)
 
+The first two arguments are required, while the third argument is optional. If the last argument is left empty(or nil), Sniffle will assume your tree is in the workspace.
 
+```lua
+-- Sniffle assumes your tree is in workspace 
+SniffleBase:CreateDataBase("LoginInfo", "Tree")
+-- Created the LoginInfo.Txt Fle in the "Tree"
+
+local PathToTree = "/workspace/foo/foo2/"
+-- Note always end it with / or sniffle will yield and error
+
+-- Sniffle identifys that you have provided a path and will create the file in the dir given
+SniffleBase:CreateDataBase("LoginInfo", "Tree",PathToTree)
+```
 
 
 

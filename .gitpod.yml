@@ -1,3 +1,2 @@
 tasks:
   - init: brew install lua
-  - init: brew install luarocks
