@@ -50,19 +50,10 @@ local Path = "/workspace/foo/foo2/foo3"
 SniffleBase.CreateDataTree("Tree", Path)
 ```
 
-<<<<<<< HEAD
 The function...
 ```
 SniffleBase.CreateDataTree()
 ```
-=======
-Or if you are calling it from a folder in the workspace it will give the directory of where the folder is, so it is recommended when making a folder the file your calling it from is in the workspace
-
-If you call the the make directory function and the file exist it will return an error ( This will be fixed in later updates as we plan on using make directory as a safety function incase your folder gets deleted for whatever reason)
-
-
-
->>>>>>> 123f9aee1085a019dcdf83e0175de8b9f816b054
 
 not only initializes your directory, but it also serves as a backup in case your directory goes missing or the folder is unintentionally erased. If this occurs, it will recreate the folder (but will not completely restore all deleted or missing data) so that our code does not break.
 
