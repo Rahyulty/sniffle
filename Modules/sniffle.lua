@@ -46,8 +46,11 @@ function Sniffle:CreateDataBase(DataBaseName, Under, PathofUnder)
          end
       else
          self:CreateDataTree(Under)
+         warn("Directory does not exist one has been created for you in your "..LuaFileSystem.currentdir())
       end
    end
 end
+
+
 
 return Sniffle
