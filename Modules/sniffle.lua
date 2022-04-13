@@ -1,7 +1,31 @@
+local Sniffle = { _version = "0.0.1"}
 JSON = require "Modules.JSON"
-LOS = require "Modules.LEOS"
-LuaFileSystem = require "lfs"
-local Sniffle = {}
+local lfs = require "lfs"
+
+local IsDir = function(name)
+   if type(name)~="string" then return false end
+   local cd = lfs.currentdir()
+   local is = lfs.chdir(name) and true or false
+   lfs.chdir(cd)
+   return is   
+end
+
+local Find = function (Table, Value)
+   for index,data in pairs(Table) do 
+      if data == Value then 
+              return index
+      end
+end
+return nil 
+end
+
+local MakeDirectory = function (dirname)
+   local Folder = os.execute("mkdir " .. dirname)
+end
+
+
+
+
 local Say = print
 
 Trees = {}
@@ -12,14 +36,14 @@ local GetPath = function(str,sep)
 end
 
 function Sniffle.CreateDataTree(TreeName, Path)
-   if LOS.IsDir(TreeName) == false then 
+   if IsDir(TreeName) == false then 
       if  Path == nil then 
          Say("Dir not found creating Directory")
-         print(LuaFileSystem.currentdir())
-         LOS.MakeDirectory(TreeName)
+         print(lfs.currentdir())
+         MakeDirectory(TreeName)
       elseif Path ~= nil then 
          assert(type(Path) == "string", " Your path needs to be a string")
-         LOS.MakeDirectory(Path.."/"..TreeName)
+         MakeDirectory(Path.."/"..TreeName)
          table.insert( Trees, #Trees + 1 ,TreeName)
 
        end
@@ -32,11 +56,11 @@ end
 
 
 function Sniffle:CreateDataBase(DataBaseName, Under, PathofUnder)
-   if LOS.Find(Trees, Under) then 
-      if LOS.IsDir(Under) == true then 
+   if Find(Trees, Under) then 
+      if IsDir(Under) == true then 
          if PathofUnder == nil then 
             -- We Assume in workspace
-            File = io.open(LuaFileSystem.currentdir().."/"..Under.."/"..DataBaseName, "w")
+            File = io.open(lfs.currentdir().."/"..Under.."/"..DataBaseName, "w")
             File:write(JSON.encode({}))
             File:close()           
          else
@@ -46,7 +70,7 @@ function Sniffle:CreateDataBase(DataBaseName, Under, PathofUnder)
          end
       else
          self:CreateDataTree(Under)
-         warn("Directory does not exist one has been created for you in your "..LuaFileSystem.currentdir())
+         warn("Directory does not exist one has been created for you in your "..lfs.currentdir())
       end
    end
 end
@@ -54,3 +78,4 @@ end
 
 
 return Sniffle
+
