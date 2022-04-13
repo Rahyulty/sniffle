@@ -1,4 +1,7 @@
-# sniffle
+# sniffle 
+
+- Version 0.0.1
+- Status = Unfinished
 
 A beginner friendly way to start Databases with lua
 
