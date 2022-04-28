@@ -1,4 +1,11 @@
+image:
+  file: .gitpod.Dockerfile
+
 tasks:
-  - init: brew install lua
-  - init: brew install luarocks
-  - init: luarocks install luafilesystem
+  - init: lua --version
+
+vscode:
+  extensions:
+    - sumneko.lua@0.15.4:v9ELO/hl++dbpsIqPq/7Mg==
+    - sumneko.lua
+    - tomblind.local-lua-debugger-vscode
