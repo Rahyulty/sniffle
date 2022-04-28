@@ -16,7 +16,7 @@ A beginner friendly way to start Databases with lua
 # Main
 - Basic Functions
     - [Setup](#Setup)
-    - [Data Implementation Methods](#Data Implementation Methods)
+    - [Data Implementation Methods](#DataImplementationMethods)
 
 
 
