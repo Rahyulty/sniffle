@@ -16,7 +16,7 @@ A beginner friendly way to start Databases with lua
 # Main
 - Basic Functions
     - [Setup](#Setup)
-    - [Data Implementation Methods](#DataImplementationMethods)
+    - [Data Implementation Methods](#Implementation)
 
 
 
@@ -91,7 +91,7 @@ local PathToTree = "/workspace/foo/foo2/"
 SniffleBase:CreateDataBase("LoginInfo", "Tree",PathToTree)
 ```
 
-# Data Implementation Methods
+# Implementation 
 
 Sniffle allows you to incorporate data in a variety of ways. The first method is to manually insert it into the file, and the second is to use the sniffle module.
 
