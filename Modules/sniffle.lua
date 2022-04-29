@@ -1,4 +1,4 @@
-local Sniffle = { _version = "0.0.2"}
+local Sniffle = { _version = "0.0.4"}
 JSON = require "Modules.JSON"
 local lfs = require "lfs"
 
@@ -153,5 +153,34 @@ function Sniffle:RequestAsync(Under ,Name, value)
                end
             end
          end 
+
+      function Sniffle.CreateID(Type, length)
+         if Type == "String" then 
+         -- https://gist.github.com/haggen/2fd643ea9a261fea2094
+         math.randomseed(os.time())
+         local character_set = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+         
+         local string_sub = string.sub
+         local math_random = math.random
+         local table_concat = table.concat
+         local character_set_amount = #character_set
+         local number_one = 1
+         local default_length = 10
+         
+             local random_string = {}
+         
+             for int = number_one, length or default_length do
+               print("s")
+                 local random_number = math_random(number_one, character_set_amount)
+                 local character = string_sub(character_set, random_number, random_number)
+         
+                 random_string[#random_string + number_one] = character
+             end
+         
+             return table_concat(random_string)
+            else
+               return math.random(length, length + length)
+         end
+      end
 return Sniffle
 

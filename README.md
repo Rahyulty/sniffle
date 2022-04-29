@@ -2,16 +2,14 @@
 A beginner friendly way to start Databases with lua
 
 
-- Version 0.0.2
+- Version 0.0.4
 - Status = Unfinished
 
 ## Update Log
 - ***Added Request Async which can be used to make a request to the module to insert data to a specifc database***
 
-- Added SniffleHelper, which allows for annotations on everything sniffle does for clarity.
-- Added a TreeManager that will be in the workspace by default so that we may update our client's tree table in the module itself 
-
-- Fixed MAJOR data loss bug + Cleaned up sniffle helper
+- Added Request Async + ID Creation
+- Bugs Fixed
 
 # Main
 - Basic Functions
@@ -93,14 +91,14 @@ SniffleBase:CreateDataBase("LoginInfo", "Tree",PathToTree)
 
 # Implementation 
 
-Sniffle allows you to incorporate data in a variety of ways. The first method is to manually insert it into the file, and the second is to use the sniffle module.
+You may use Sniffle to integrate data in a variety of ways. Manually inserting it into the file is the first option, and using the sniffle module is the second.
 
 
-Manually you have to be careful when implementing. Since its a string and sniffle handles tables we use '[]' insetad of '{}' 
+When implementing manually, you must be cautious. We use '[]' instead of "{}" since it's a string and sniffle handles tables.
 
-A good example of manual implemenetation would be something like this 
+Something like this would be a nice example of manual implementation.
 
-Say we are structuring our login information. Since Sniffle uses tables then we will use a table with tables inside of it to store user data.
+Let's pretend we're organizing our login information. We'll use a table with tables inside of it to store user info because Sniffle utilizes tables.
 
 Say our format is this 
 
@@ -116,11 +114,11 @@ if we were to manual implemenet this into a txt file we would write it as this.
 [["Foo","FooPassword",10000001],["Foo2","FooPassword2",10000002]]
 ```
 
-This is very sensitive so it is better than we use the sniffle module so we can get 100% (or 99.9% lol) accuracy all the time
+This is really sensitive, therefore it's preferable to using the sniffle module, which guarantees 100 percent (or 99.9%, lol) correctness all of the time.
 
 ```SniffleBase:RequestAsync```
 
-This makes a request to the module to implement data that can be blocked or failed due to traffic (Most likely will not happen) or errors.
+This instructs the module to implement data that may be blocked or failed as a result of traffic (which is unlikely to occur) or faults.
 
 Arguments
 - Under - What is it data tree is under (dir name)
@@ -130,3 +128,27 @@ Arguments
  - Value - what we are inserting in 
 
  
+```lua
+SniffleBase:RequestAsync("Tree", "LoginInfo", {"coolfoo","foocool"})
+```
+
+Any erros yielded by ```RequestAsync``` will break anything but will insetad ignore the request (Activating SniffleHelper will allow you to see what the error is)
+
+when you got to your text file you should see the argument #3 inserted into your table!
+
+# Comprehension 
+ - Coming Soon
+
+# Extras
+
+something common in most databases are ID that are strings or numbers. Sniffle Allows you to easily create those from a certain length. 
+
+```lua
+print(SniffleBase.CreateID("String",50))
+
+--[[
+OutPut 
+
+HBVMedXMsqHjqsockOTtwLrQbRzULxwAdCHVchHinkcBvByFEc
+]]
+```
