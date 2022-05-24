@@ -2,13 +2,11 @@
 A beginner friendly way to start Databases with lua
 
 
-- Version 0.0.4
+- Version 0.0.5
 - Status = Unfinished
 
 ## Update Log
-- ***Added Request Async which can be used to make a request to the module to insert data to a specifc database***
-
-- Added Request Async + ID Creation
+- SniffleHelper now works as intended
 - Bugs Fixed
 
 # Main

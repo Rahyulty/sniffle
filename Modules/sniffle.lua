@@ -1,4 +1,4 @@
-local Sniffle = { _version = "0.0.4"}
+local Sniffle = { _version = "0.0.5"}
 JSON = require "Modules.JSON"
 local lfs = require "lfs"
 
@@ -89,7 +89,7 @@ function Sniffle.CreateDataTree(TreeName, Path)
          local String = File:read('*all')
          local TableRaw = JSON.decode(String)
          Trees = TableRaw
-         SniffleSay("[Sniffle Helper] The file "..TreeName.." has already been created already exist, no changes have been made")
+         SniffleHelper("[Sniffle Helper] The file "..TreeName.." has already been created already exist, no changes have been made")
    end
 end
 
@@ -106,7 +106,7 @@ function Sniffle:CreateDataBase(DataBaseName, Under, PathofUnder)
             end
          else
             self:CreateDataTree(Under)
-            SniffleSay("Directory does not exist one has been created for you in your "..lfs.currentdir())
+            SniffleHelper("Directory does not exist one has been created for you in your "..lfs.currentdir())
   end
  end
    else
@@ -119,7 +119,7 @@ function Sniffle:CreateDataBase(DataBaseName, Under, PathofUnder)
                end
             else
                self:CreateDataTree(Under)
-               SniffleSay("Directory does not exist one has been created for you in your "..lfs.currentdir())
+               SniffleHelper("Directory does not exist one has been created for you in your "..lfs.currentdir())
             end
          end
       end
@@ -144,10 +144,10 @@ function Sniffle:RequestAsync(Under ,Name, value)
                               local File2 = io.open(lfs.currentdir().."/"..Under.."/"..Name, 'w')
                               File2:write(CookedString)
                               File2:close()
-                              SniffleSay("Request Succeded")
+                              SniffleHelper("Request Succeded")
                            end
                         else
-                           SniffleSay("REQUEST FAILED : Sniffle has not found a table inside of the file no changes has been made")
+                           SniffleHelper("REQUEST FAILED : Sniffle has not found a table inside of the file no changes has been made")
                         end
                   end
                end
@@ -182,5 +182,10 @@ function Sniffle:RequestAsync(Under ,Name, value)
                return math.random(length, length + length)
          end
       end
+
+      function Sniffle.BulidProject()
+            os.execute("lua bulid.lua")
+      end
+
 return Sniffle
 

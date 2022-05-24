@@ -2,4 +2,5 @@ main.lua
 lib/
 Tree/
 TreeManager
-
+bulid.lua
+config.lua
